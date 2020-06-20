@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="imc.css">
+</head>
+<body>
+    <header id="cabecalho">
+        <h1>Calculadora de IMC</h1>
+        
+        <img id="circle" src="redcircle.png" alt="circulo vermelho">
+        <p id="imc">IMC</p>
+    
+        <h2 id="estadoDeSaude">Insira sua altura e peso</h2>
+    </header>
+
+    <div id="dados">
+        <p>Altura: <input type="number" name="nAltura" id="iAltura" min="100" max="250" placeholder="ex: 170" size="50" maxlength="3"> cm</p>
+        <p>Peso: <input type="number" name="nPeso" id="iPeso" min="20" max="300" placeholder="ex: 60" size="20" maxlength="3"> kg</p>
+    
+        <input type="button" value="Calcular" onclick="calcularIMC()">
+
+    </div>
+
+<script>
+
+function calcularIMC() {
+    var altura = parseInt(document.getElementById("iAltura").value.replace('.','').replace(',','.'))
+    var peso = parseInt(document.getElementById('iPeso').value.replace('.','').replace(',','.'))
+    var imc = ((peso/(altura**2))*10000)
+    
+    document.getElementById('imc').innerText = imc.toFixed(1)
+        if (imc<18.5) {
+            document.getElementById('estadoDeSaude').innerText = "Você está magro demais"
+}
+        if (imc>=18.5 && imc<25) {
+            document.getElementById('estadoDeSaude').innerText = "O seu peso está normal"
+}
+        if (imc>=25 && imc<30) {
+            document.getElementById('estadoDeSaude').innerText = "Você está com sobrepeso"
+}
+        if (imc>=30 && imc<40) {
+            document.getElementById('estadoDeSaude').innerText = "Você está com obesidade"
+        }
+        if (imc>=40) {
+            document.getElementById('estadoDeSaude').innerText = "Você está com obesidade grave! Procure um médico!"
+        }
+        
+
+        }
+        
+        
+
+        
+    
+
+
+</script>
+    
+</body>
+</html>
